@@ -3,6 +3,9 @@ package com.ansj.delivery.restaurant.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "menus")
 @Getter
@@ -33,6 +36,9 @@ public class Menu {
 
     private int sortOrder;
 
+    @OneToMany(mappedBy = "menu", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<MenuOption> options = new ArrayList<>();
+
     @Builder
     public Menu(Restaurant restaurant, String name, String description, int price,
                 String imageUrl, String categoryName, int sortOrder) {
@@ -48,5 +54,15 @@ public class Menu {
 
     public void updateAvailability(boolean isAvailable) {
         this.isAvailable = isAvailable;
+    }
+
+    public void update(String name, String description, int price, String imageUrl,
+                       String categoryName, int sortOrder) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.imageUrl = imageUrl;
+        this.categoryName = categoryName;
+        this.sortOrder = sortOrder;
     }
 }

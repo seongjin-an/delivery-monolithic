@@ -74,4 +74,17 @@ public class Restaurant extends BaseEntity {
     public void close() {
         this.status = RestaurantStatus.CLOSED;
     }
+
+    public void update(String name, String phone, String address, BigDecimal latitude,
+                       BigDecimal longitude, int minOrderAmount, int deliveryFee,
+                       int estimatedDeliveryMinutes) {
+        this.name = name;
+        this.phone = phone;
+        this.address = address;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.minOrderAmount = minOrderAmount;
+        this.deliveryFee = deliveryFee;
+        this.estimatedDeliveryMinutes = estimatedDeliveryMinutes;
+    }
 }

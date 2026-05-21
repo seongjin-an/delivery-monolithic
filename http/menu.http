@@ -1,0 +1,49 @@
+### 식당 메뉴 등록
+POST http://localhost:8080/api/owner/restaurants/1/menus
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5ZjI4YjMzZS1jNjIyLTQ4OWQtOTI2YS00OWVmMWNlN2ZhYTAiLCJyb2xlIjoiT1dORVIiLCJpYXQiOjE3NzkzMzcxMTAsImV4cCI6MTc3OTM0MDcxMH0.WFc-9j63RP3EsNyPSgtagAdomWCHya8KKpG5q3y8LPbSOUdO-0pAkZ28HfLvnziwulPPDalFX7sbsGVPMemaew
+
+{
+  "name": "menu1",
+  "description": "menu1 description",
+  "price": 10000,
+  "imageUrl": "",
+  "categoryName": "KOREAN",
+  "sortOrder": 1,
+  "options": [
+    {
+      "name": "menu1 option1",
+      "isRequired": true,
+      "maxSelectCount": 1,
+      "items": [
+        {
+          "name": "menu1 option1 item1",
+          "extraPrice": 1000
+        }
+      ]
+    }
+  ]
+}
+
+### 식당 메뉴 수정
+PUT http://localhost:8080/api/owner/menus/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5ZjI4YjMzZS1jNjIyLTQ4OWQtOTI2YS00OWVmMWNlN2ZhYTAiLCJyb2xlIjoiT1dORVIiLCJpYXQiOjE3NzkzMzcxMTAsImV4cCI6MTc3OTM0MDcxMH0.WFc-9j63RP3EsNyPSgtagAdomWCHya8KKpG5q3y8LPbSOUdO-0pAkZ28HfLvnziwulPPDalFX7sbsGVPMemaew
+
+{
+  "name": "menu-1",
+  "description": "menu-1 description",
+  "price": 11000,
+  "imageUrl": "",
+  "categoryName": "KOREAN",
+  "sortOrder": 1
+}
+
+### 식당 메뉴 삭제
+DELETE http://localhost:8080/api/owner/menus/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5ZjI4YjMzZS1jNjIyLTQ4OWQtOTI2YS00OWVmMWNlN2ZhYTAiLCJyb2xlIjoiT1dORVIiLCJpYXQiOjE3NzkzMzcxMTAsImV4cCI6MTc3OTM0MDcxMH0.WFc-9j63RP3EsNyPSgtagAdomWCHya8KKpG5q3y8LPbSOUdO-0pAkZ28HfLvnziwulPPDalFX7sbsGVPMemaew
+
+### 식당 메뉴 노출 여부
+PATCH http://localhost:8080/api/owner/menus/1/availability?available=false
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5ZjI4YjMzZS1jNjIyLTQ4OWQtOTI2YS00OWVmMWNlN2ZhYTAiLCJyb2xlIjoiT1dORVIiLCJpYXQiOjE3NzkzMzcxMTAsImV4cCI6MTc3OTM0MDcxMH0.WFc-9j63RP3EsNyPSgtagAdomWCHya8KKpG5q3y8LPbSOUdO-0pAkZ28HfLvnziwulPPDalFX7sbsGVPMemaew
