@@ -1,0 +1,32 @@
+services:
+  postgres:
+    image: postgres:16.13-alpine
+    pull_policy: never
+    container_name: delivery-postgres
+    environment:
+      POSTGRES_DB: delivery
+      POSTGRES_USER: delivery
+      POSTGRES_PASSWORD: delivery
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./.data/postgres/data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U delivery -d delivery"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:latest
+    pull_policy: never
+    container_name: delivery-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./.data/redis/data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
