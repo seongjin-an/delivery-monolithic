@@ -14,6 +14,7 @@ import com.ansj.delivery.restaurant.domain.RestaurantStatus;
 import com.ansj.delivery.restaurant.repository.MenuOptionItemRepository;
 import com.ansj.delivery.restaurant.repository.MenuRepository;
 import com.ansj.delivery.restaurant.repository.RestaurantRepository;
+import com.ansj.delivery.notification.service.NotificationService;
 import com.ansj.delivery.user.domain.User;
 import com.ansj.delivery.user.repository.UserRepository;
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ public class OrderService {
     private final MenuRepository menuRepository;
     private final MenuOptionItemRepository menuOptionItemRepository;
     private final UserRepository userRepository;
+    private final NotificationService notificationService;
 
     @Transactional
     public OrderResponse createOrder(UUID customerId, CreateOrderRequest request) {
@@ -121,6 +123,12 @@ public class OrderService {
         }
 
         orderRepository.save(order);
+
+        notificationService.send(
+                restaurant.getOwner(), "ORDER_PLACED",
+                "새 주문이 들어왔습니다",
+                restaurant.getName() + "에 새 주문이 접수되었습니다.");
+
         return OrderResponse.from(order);
     }
 
@@ -146,6 +154,12 @@ public class OrderService {
             throw BusinessException.forbidden("해당 주문에 대한 권한이 없습니다.");
         }
         order.cancel(request.reason());
+
+        notificationService.send(
+                order.getRestaurant().getOwner(), "ORDER_CANCELLED",
+                "주문이 취소되었습니다",
+                order.getRestaurant().getName() + "의 주문이 취소되었습니다.");
+
         return OrderResponse.from(order);
     }
 
@@ -162,6 +176,12 @@ public class OrderService {
     public OrderResponse acceptOrder(UUID ownerId, UUID orderId) {
         Order order = getOwnedOrder(ownerId, orderId);
         order.accept();
+
+        notificationService.send(
+                order.getCustomer(), "ORDER_ACCEPTED",
+                "주문이 수락되었습니다",
+                order.getRestaurant().getName() + "에서 주문을 수락했습니다.");
+
         return OrderResponse.from(order);
     }
 

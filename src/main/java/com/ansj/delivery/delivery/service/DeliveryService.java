@@ -9,6 +9,7 @@ import com.ansj.delivery.delivery.dto.DeliveryResponse;
 import com.ansj.delivery.delivery.dto.RiderLocationRequest;
 import com.ansj.delivery.delivery.repository.DeliveryRepository;
 import com.ansj.delivery.delivery.repository.RiderLocationRepository;
+import com.ansj.delivery.notification.service.NotificationService;
 import com.ansj.delivery.order.domain.Order;
 import com.ansj.delivery.order.domain.OrderStatus;
 import com.ansj.delivery.order.repository.OrderRepository;
@@ -30,6 +31,7 @@ public class DeliveryService {
     private final RiderLocationRepository riderLocationRepository;
     private final OrderRepository orderRepository;
     private final UserRepository userRepository;
+    private final NotificationService notificationService;
 
     public List<AvailableDeliveryResponse> getAvailableDeliveries() {
         return orderRepository.findAvailableForDelivery().stream()
@@ -69,7 +71,14 @@ public class DeliveryService {
                 .rider(rider)
                 .build();
 
-        return DeliveryResponse.from(deliveryRepository.save(delivery));
+        DeliveryResponse response = DeliveryResponse.from(deliveryRepository.save(delivery));
+
+        notificationService.send(
+                order.getCustomer(), "DELIVERY_ASSIGNED",
+                "배달기사가 배정되었습니다",
+                rider.getName() + " 기사님이 배달을 맡았습니다.");
+
+        return response;
     }
 
     @Transactional
@@ -82,6 +91,11 @@ public class DeliveryService {
 
         delivery.pickup();
         delivery.getOrder().pickup();
+
+        notificationService.send(
+                delivery.getOrder().getCustomer(), "DELIVERY_PICKED_UP",
+                "배달기사가 픽업했습니다",
+                "곧 배달이 시작됩니다.");
 
         return DeliveryResponse.from(delivery);
     }
@@ -96,6 +110,11 @@ public class DeliveryService {
 
         delivery.complete();
         delivery.getOrder().complete();
+
+        notificationService.send(
+                delivery.getOrder().getCustomer(), "DELIVERY_COMPLETED",
+                "배달이 완료되었습니다",
+                "주문하신 음식이 도착했습니다. 맛있게 드세요!");
 
         return DeliveryResponse.from(delivery);
     }
