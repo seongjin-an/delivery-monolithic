@@ -1,0 +1,19 @@
+### 결제하기
+POST http://localhost:8080/api/payments
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwZGJhZTRiYy05Yjc3LTQwYjAtYTFlMi0wOThiYTkwYjY0MjYiLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE3NzkzNDQ4NTIsImV4cCI6MTc3OTM0ODQ1Mn0.lcZVaVLMdejEJA58I6L-9wcLiBEkEtjsMhTKfOvvxLb-00PKiJstiVV6Bj3fb4K5C_kETXz1O-nXDtXuOCPQuA
+
+{
+  "orderId": "ca188ab5-20ce-40a4-a47b-14b56b9f42a5",
+  "method": "CARD"
+}
+
+### 환뷸하기 for CANCELLED of order status
+POST http://localhost:8080/api/payments/7ef765f0-e685-44d2-a450-a2a3caf95209/refund
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwZGJhZTRiYy05Yjc3LTQwYjAtYTFlMi0wOThiYTkwYjY0MjYiLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE3NzkzNDQ4NTIsImV4cCI6MTc3OTM0ODQ1Mn0.lcZVaVLMdejEJA58I6L-9wcLiBEkEtjsMhTKfOvvxLb-00PKiJstiVV6Bj3fb4K5C_kETXz1O-nXDtXuOCPQuA
+
+### 결제 정보 조회
+GET http://localhost:8080/api/payments/orders/ca188ab5-20ce-40a4-a47b-14b56b9f42a5
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwZGJhZTRiYy05Yjc3LTQwYjAtYTFlMi0wOThiYTkwYjY0MjYiLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE3NzkzNDQ4NTIsImV4cCI6MTc3OTM0ODQ1Mn0.lcZVaVLMdejEJA58I6L-9wcLiBEkEtjsMhTKfOvvxLb-00PKiJstiVV6Bj3fb4K5C_kETXz1O-nXDtXuOCPQuA
