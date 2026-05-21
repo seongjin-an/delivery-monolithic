@@ -1,0 +1,25 @@
+### 회원가입
+POST http://localhost:8080/api/auth/signup
+Content-Type: application/json
+
+{
+  "email": "admin@delivery-monolithic.com",
+  "password": "admin1234",
+  "name": "admin",
+  "phone": "010-1234-1234",
+  "role": "ADMIN"
+}
+
+### 로그인
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@delivery-monolithic.com",
+  "password": "admin1234"
+}
+
+### 사용자 정보
+GET http://localhost:8080/api/auth/me
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiNmQ0MzgxNC1lZDcxLTQwZTktOGNmOC03YjRkOWFhZjZiMjYiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NzkzMzEyOTQsImV4cCI6MTc3OTMzNDg5NH0.ETTbUPOIEMfjwepWd1lrv1s686I2hApjf6P80nR8UpUmdYAgqJ7Vbt_9y1BlTvmtWQRj_EJrqqjuvWgXYx3-BQ
