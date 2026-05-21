@@ -140,7 +140,7 @@ public class DeliveryService {
     }
 
     private Order findOrder(UUID orderId) {
-        return orderRepository.findById(orderId)
+        return orderRepository.findByIdWithLock(orderId)
                 .orElseThrow(() -> BusinessException.notFound("주문을 찾을 수 없습니다."));
     }
 

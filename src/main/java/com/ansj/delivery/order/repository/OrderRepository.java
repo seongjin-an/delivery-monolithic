@@ -4,13 +4,21 @@ import com.ansj.delivery.order.domain.Order;
 import com.ansj.delivery.order.domain.OrderStatus;
 import com.ansj.delivery.restaurant.domain.Restaurant;
 import com.ansj.delivery.user.domain.User;
+import jakarta.persistence.LockModeType;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 import java.util.UUID;
+import org.springframework.data.repository.query.Param;
 
 public interface OrderRepository extends JpaRepository<Order, UUID> {
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    @Query("SELECT o FROM Order o WHERE o.id = :id")
+    Optional<Order> findByIdWithLock(@Param("id") UUID id);
+
     List<Order> findByCustomerOrderByCreatedAtDesc(User customer);
     List<Order> findByRestaurantOrderByCreatedAtDesc(Restaurant restaurant);
     List<Order> findByRestaurantAndStatusOrderByCreatedAtDesc(Restaurant restaurant, OrderStatus status);

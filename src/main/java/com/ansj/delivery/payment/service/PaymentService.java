@@ -31,7 +31,7 @@ public class PaymentService {
     @Transactional
     public PaymentResponse pay(UUID customerId, PaymentRequest request) {
         User customer = findUser(customerId);
-        Order order = orderRepository.findById(request.orderId())
+        Order order = orderRepository.findByIdWithLock(request.orderId())
                 .orElseThrow(() -> BusinessException.notFound("주문을 찾을 수 없습니다."));
 
         if (!order.getCustomer().getId().equals(customerId)) {
