@@ -1,0 +1,53 @@
+### 주문 for Customer
+POST http://localhost:8080/api/orders
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwZGJhZTRiYy05Yjc3LTQwYjAtYTFlMi0wOThiYTkwYjY0MjYiLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE3NzkzNDA3NTksImV4cCI6MTc3OTM0NDM1OX0.BrvCMXwoc8HzqBi5tjQqOUSL5owynJ16erGcc_Oati85jSfVHlPPlOJXaREiXHDPpo63LF8qisgYJBOh0B1Nqw
+
+{
+  "restaurantId": 1,
+  "deliveryAddress": "경기도 성남시 분당구 판교로22",
+  "deliveryLatitude": 37.395974,
+  "deliveryLongitude": 127.110965,
+  "requestNote": "빠르게 배달좀요",
+  "items": [
+    {
+      "menuId": 2,
+      "quantity": 2,
+      "selectedOptionItemIds": [2]
+    }
+  ]
+}
+
+### 주문 목록 조회 for Customer
+GET http://localhost:8080/api/orders
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwZGJhZTRiYy05Yjc3LTQwYjAtYTFlMi0wOThiYTkwYjY0MjYiLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE3NzkzNDA3NTksImV4cCI6MTc3OTM0NDM1OX0.BrvCMXwoc8HzqBi5tjQqOUSL5owynJ16erGcc_Oati85jSfVHlPPlOJXaREiXHDPpo63LF8qisgYJBOh0B1Nqw
+
+### 주문 조회 for Customer
+GET http://localhost:8080/api/orders/44e0f11a-35ef-4d4c-b034-3efaa55f4e29
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwZGJhZTRiYy05Yjc3LTQwYjAtYTFlMi0wOThiYTkwYjY0MjYiLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE3NzkzNDA3NTksImV4cCI6MTc3OTM0NDM1OX0.BrvCMXwoc8HzqBi5tjQqOUSL5owynJ16erGcc_Oati85jSfVHlPPlOJXaREiXHDPpo63LF8qisgYJBOh0B1Nqw
+
+### 주문 취소
+POST http://localhost:8080/api/orders/7ee77e92-6716-48eb-884a-72ff55c8f575/cancel
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwZGJhZTRiYy05Yjc3LTQwYjAtYTFlMi0wOThiYTkwYjY0MjYiLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE3NzkzNDA3NTksImV4cCI6MTc3OTM0NDM1OX0.BrvCMXwoc8HzqBi5tjQqOUSL5owynJ16erGcc_Oati85jSfVHlPPlOJXaREiXHDPpo63LF8qisgYJBOh0B1Nqw
+
+{
+  "reason": "변심"
+}
+
+### 식당 주문 확인 for Owner
+GET http://localhost:8080/api/owner/restaurants/1/orders
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5ZjI4YjMzZS1jNjIyLTQ4OWQtOTI2YS00OWVmMWNlN2ZhYTAiLCJyb2xlIjoiT1dORVIiLCJpYXQiOjE3NzkzNDEwNDksImV4cCI6MTc3OTM0NDY0OX0.-qgYMMvNjxXxqMoQRM9rYzbPRb5yABQe0OBxQWXHFnxUjMO12hhfJ70_eyqq6iTHXehCdMsZWZaujxD25GnuOw
+
+status=CANCELLED
+
+### 식당 주문 수락 for Owner
+PATCH http://localhost:8080/api/owner/orders/ca188ab5-20ce-40a4-a47b-14b56b9f42a5/accept
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5ZjI4YjMzZS1jNjIyLTQ4OWQtOTI2YS00OWVmMWNlN2ZhYTAiLCJyb2xlIjoiT1dORVIiLCJpYXQiOjE3NzkzNDEwNDksImV4cCI6MTc3OTM0NDY0OX0.-qgYMMvNjxXxqMoQRM9rYzbPRb5yABQe0OBxQWXHFnxUjMO12hhfJ70_eyqq6iTHXehCdMsZWZaujxD25GnuOw
+
+### 식당 주문 조리 완료 for Owner
+PATCH http://localhost:8080/api/owner/orders/ca188ab5-20ce-40a4-a47b-14b56b9f42a5/ready
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5ZjI4YjMzZS1jNjIyLTQ4OWQtOTI2YS00OWVmMWNlN2ZhYTAiLCJyb2xlIjoiT1dORVIiLCJpYXQiOjE3NzkzNDEwNDksImV4cCI6MTc3OTM0NDY0OX0.-qgYMMvNjxXxqMoQRM9rYzbPRb5yABQe0OBxQWXHFnxUjMO12hhfJ70_eyqq6iTHXehCdMsZWZaujxD25GnuOw

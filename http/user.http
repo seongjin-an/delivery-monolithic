@@ -3,11 +3,11 @@ POST http://localhost:8080/api/auth/signup
 Content-Type: application/json
 
 {
-  "email": "owner1@delivery-monolithic.com",
-  "password": "owner1111",
-  "name": "owner1",
-  "phone": "010-1111-1111",
-  "role": "OWNER"
+  "email": "customer1@delivery-monolithic.com",
+  "password": "customer1111",
+  "name": "customer1",
+  "phone": "010-3111-1111",
+  "role": "CUSTOMER"
 }
 
 ### 로그인

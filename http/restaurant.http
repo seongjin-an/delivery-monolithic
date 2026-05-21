@@ -24,23 +24,23 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5ZjI4YjMzZS1jNjIyLTQ4OWQtO
 ### 식당 업데이트
 PUT http://localhost:8080/api/owner/restaurants/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5ZjI4YjMzZS1jNjIyLTQ4OWQtOTI2YS00OWVmMWNlN2ZhYTAiLCJyb2xlIjoiT1dORVIiLCJpYXQiOjE3NzkzMzcxMTAsImV4cCI6MTc3OTM0MDcxMH0.WFc-9j63RP3EsNyPSgtagAdomWCHya8KKpG5q3y8LPbSOUdO-0pAkZ28HfLvnziwulPPDalFX7sbsGVPMemaew
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5ZjI4YjMzZS1jNjIyLTQ4OWQtOTI2YS00OWVmMWNlN2ZhYTAiLCJyb2xlIjoiT1dORVIiLCJpYXQiOjE3NzkzNDEwNDksImV4cCI6MTc3OTM0NDY0OX0.-qgYMMvNjxXxqMoQRM9rYzbPRb5yABQe0OBxQWXHFnxUjMO12hhfJ70_eyqq6iTHXehCdMsZWZaujxD25GnuOw
 
 {
-  "name": "Owner1 식당1",
+  "name": "Owner1 식당",
   "phone": "010-1111-1111",
-  "address": "경기도 성남시 분당구 판교로1",
+  "address": "경기도 성남시 분당구 판교로",
   "latitude": 37.401674,
   "longitude": 127.101081,
-  "minOrderAmount": 2,
-  "deliveryFee": 11000,
-  "estimatedDeliveryMinutes": 16
+  "minOrderAmount": 14000,
+  "deliveryFee": 1000,
+  "estimatedDeliveryMinutes": 15
 }
 
 ### 식당 영업 시작
 PATCH http://localhost:8080/api/owner/restaurants/1/open
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5ZjI4YjMzZS1jNjIyLTQ4OWQtOTI2YS00OWVmMWNlN2ZhYTAiLCJyb2xlIjoiT1dORVIiLCJpYXQiOjE3NzkzMzcxMTAsImV4cCI6MTc3OTM0MDcxMH0.WFc-9j63RP3EsNyPSgtagAdomWCHya8KKpG5q3y8LPbSOUdO-0pAkZ28HfLvnziwulPPDalFX7sbsGVPMemaew
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5ZjI4YjMzZS1jNjIyLTQ4OWQtOTI2YS00OWVmMWNlN2ZhYTAiLCJyb2xlIjoiT1dORVIiLCJpYXQiOjE3NzkzNDEwNDksImV4cCI6MTc3OTM0NDY0OX0.-qgYMMvNjxXxqMoQRM9rYzbPRb5yABQe0OBxQWXHFnxUjMO12hhfJ70_eyqq6iTHXehCdMsZWZaujxD25GnuOw
 
 ### 식당 영업 종료
 PATCH http://localhost:8080/api/owner/restaurants/1/close

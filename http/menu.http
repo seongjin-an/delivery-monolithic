@@ -6,7 +6,7 @@ Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5ZjI4YjMzZS1jNjIyLTQ4OWQtO
 {
   "name": "menu1",
   "description": "menu1 description",
-  "price": 10000,
+  "price": 8000,
   "imageUrl": "",
   "categoryName": "KOREAN",
   "sortOrder": 1,
