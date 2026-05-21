@@ -1,0 +1,33 @@
+### 수락 가능한 배달 목록 for RIDER
+GET http://localhost:8080/api/rider/deliveries/available
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkMjc4ZDYwNy1mOTYzLTQ3YzktYTQxMy03NmU3NzRiYzUyY2MiLCJyb2xlIjoiUklERVIiLCJpYXQiOjE3NzkzNDU5NjIsImV4cCI6MTc3OTM0OTU2Mn0.gJc4nI9usJFJtkS63PDM0kRDhgK446Xo_xMQeZiCN9qk1FzuCX1CAo9reKDLyiZkG7DgX5BnPodQ-Jw4KNXLAA
+
+### 배달 수락 for RIDER
+POST http://localhost:8080/api/rider/deliveries/ca188ab5-20ce-40a4-a47b-14b56b9f42a5/accept
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkMjc4ZDYwNy1mOTYzLTQ3YzktYTQxMy03NmU3NzRiYzUyY2MiLCJyb2xlIjoiUklERVIiLCJpYXQiOjE3NzkzNDU5NjIsImV4cCI6MTc3OTM0OTU2Mn0.gJc4nI9usJFJtkS63PDM0kRDhgK446Xo_xMQeZiCN9qk1FzuCX1CAo9reKDLyiZkG7DgX5BnPodQ-Jw4KNXLAA
+
+### 라이더의 배달 목록 for RIDER
+GET http://localhost:8080/api/rider/deliveries
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkMjc4ZDYwNy1mOTYzLTQ3YzktYTQxMy03NmU3NzRiYzUyY2MiLCJyb2xlIjoiUklERVIiLCJpYXQiOjE3NzkzNDU5NjIsImV4cCI6MTc3OTM0OTU2Mn0.gJc4nI9usJFJtkS63PDM0kRDhgK446Xo_xMQeZiCN9qk1FzuCX1CAo9reKDLyiZkG7DgX5BnPodQ-Jw4KNXLAA
+
+### 픽업
+PATCH http://localhost:8080/api/rider/deliveries/1/pickup
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkMjc4ZDYwNy1mOTYzLTQ3YzktYTQxMy03NmU3NzRiYzUyY2MiLCJyb2xlIjoiUklERVIiLCJpYXQiOjE3NzkzNDU5NjIsImV4cCI6MTc3OTM0OTU2Mn0.gJc4nI9usJFJtkS63PDM0kRDhgK446Xo_xMQeZiCN9qk1FzuCX1CAo9reKDLyiZkG7DgX5BnPodQ-Jw4KNXLAA
+
+### 배달 완료
+PATCH http://localhost:8080/api/rider/deliveries/1/complete
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkMjc4ZDYwNy1mOTYzLTQ3YzktYTQxMy03NmU3NzRiYzUyY2MiLCJyb2xlIjoiUklERVIiLCJpYXQiOjE3NzkzNDU5NjIsImV4cCI6MTc3OTM0OTU2Mn0.gJc4nI9usJFJtkS63PDM0kRDhgK446Xo_xMQeZiCN9qk1FzuCX1CAo9reKDLyiZkG7DgX5BnPodQ-Jw4KNXLAA
+
+### 라이더의 위치 갱신
+POST http://localhost:8080/api/rider/locations
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkMjc4ZDYwNy1mOTYzLTQ3YzktYTQxMy03NmU3NzRiYzUyY2MiLCJyb2xlIjoiUklERVIiLCJpYXQiOjE3NzkzNDU5NjIsImV4cCI6MTc3OTM0OTU2Mn0.gJc4nI9usJFJtkS63PDM0kRDhgK446Xo_xMQeZiCN9qk1FzuCX1CAo9reKDLyiZkG7DgX5BnPodQ-Jw4KNXLAA
+
+{
+  "latitude": 37.401666,
+  "longitude": 127.108724
+}
+
+### 배달 현황 조회 for Customer
+GET http://localhost:8080/api/orders/ca188ab5-20ce-40a4-a47b-14b56b9f42a5/delivery
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIwZGJhZTRiYy05Yjc3LTQwYjAtYTFlMi0wOThiYTkwYjY0MjYiLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE3NzkzNDY1OTEsImV4cCI6MTc3OTM1MDE5MX0.S2PkEvL-KKZ4q6_GvqrBg6VMk4zxpkCjfK_HIuWCIfVValzOVyJLHHxqB8ECs_BKtODgxtFi60AR-9qKpJiBtw

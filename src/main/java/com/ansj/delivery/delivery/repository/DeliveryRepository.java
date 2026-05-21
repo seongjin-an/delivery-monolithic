@@ -11,5 +11,6 @@ import java.util.Optional;
 
 public interface DeliveryRepository extends JpaRepository<Delivery, Long> {
     Optional<Delivery> findByOrder(Order order);
-    List<Delivery> findByRiderAndStatus(User rider, DeliveryStatus status);
+    List<Delivery> findByRiderOrderByAssignedAtDesc(User rider);
+    List<Delivery> findByRiderAndStatusOrderByAssignedAtDesc(User rider, DeliveryStatus status);
 }

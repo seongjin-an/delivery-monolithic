@@ -3,11 +3,11 @@ POST http://localhost:8080/api/auth/signup
 Content-Type: application/json
 
 {
-  "email": "customer1@delivery-monolithic.com",
-  "password": "customer1111",
-  "name": "customer1",
-  "phone": "010-3111-1111",
-  "role": "CUSTOMER"
+  "email": "rider1@delivery-monolithic.com",
+  "password": "rider1111",
+  "name": "rider1",
+  "phone": "010-4111-1111",
+  "role": "RIDER"
 }
 
 ### 로그인
@@ -15,12 +15,11 @@ POST http://localhost:8080/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "owner1@delivery-monolithic.com",
-  "password": "owner1111"
+  "email": "customer1@delivery-monolithic.com",
+  "password": "customer1111"
 }
 
 ### 사용자 정보
 GET http://localhost:8080/api/auth/me
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJiNmQ0MzgxNC1lZDcxLTQwZTktOGNmOC03YjRkOWFhZjZiMjYiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NzkzMzEyOTQsImV4cCI6MTc3OTMzNDg5NH0.ETTbUPOIEMfjwepWd1lrv1s686I2hApjf6P80nR8UpUmdYAgqJ7Vbt_9y1BlTvmtWQRj_EJrqqjuvWgXYx3-BQ
-
